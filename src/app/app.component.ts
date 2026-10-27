@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 
-type NodeStatus = 'online' | 'offline' | 'power-outage' | 'impaired' | 'unknown';
+type NodeStatus =
+  | 'online'
+  | 'offline'
+  | 'power-outage'
+  | 'impaired'
+  | 'unknown';
 
 interface TopologyNode {
   id: string;
@@ -48,10 +53,30 @@ const TOPOLOGY: TopologyNode = {
               detail: 'Distribution point · North',
               status: 'online',
               children: [
-                { id: 'ont-river', name: 'River House', detail: 'ONT 84:2A', status: 'online' },
-                { id: 'ont-maple', name: 'Maple Studio', detail: 'ONT C1:70', status: 'online' },
-                { id: 'ont-orchid', name: 'Orchid Market', detail: 'ONT B5:1E', status: 'impaired' },
-                { id: 'ont-beacon', name: 'Beacon Labs', detail: 'ONT 09:AF', status: 'online' },
+                {
+                  id: 'ont-river',
+                  name: 'River House',
+                  detail: 'ONT 84:2A',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-maple',
+                  name: 'Maple Studio',
+                  detail: 'ONT C1:70',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-orchid',
+                  name: 'Orchid Market',
+                  detail: 'ONT B5:1E',
+                  status: 'impaired',
+                },
+                {
+                  id: 'ont-beacon',
+                  name: 'Beacon Labs',
+                  detail: 'ONT 09:AF',
+                  status: 'online',
+                },
               ],
             },
             {
@@ -60,9 +85,24 @@ const TOPOLOGY: TopologyNode = {
               detail: 'Distribution point · East',
               status: 'online',
               children: [
-                { id: 'ont-lantern', name: 'Lantern Cafe', detail: 'ONT 31:DD', status: 'online' },
-                { id: 'ont-juniper', name: 'Juniper Office', detail: 'ONT 7E:19', status: 'online' },
-                { id: 'ont-summit', name: 'Summit Dental', detail: 'ONT A4:62', status: 'offline' },
+                {
+                  id: 'ont-lantern',
+                  name: 'Lantern Cafe',
+                  detail: 'ONT 31:DD',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-juniper',
+                  name: 'Juniper Office',
+                  detail: 'ONT 7E:19',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-summit',
+                  name: 'Summit Dental',
+                  detail: 'ONT A4:62',
+                  status: 'offline',
+                },
               ],
             },
             {
@@ -71,9 +111,24 @@ const TOPOLOGY: TopologyNode = {
               detail: 'Distribution point · South',
               status: 'impaired',
               children: [
-                { id: 'ont-canvas', name: 'Canvas Works', detail: 'ONT 5F:80', status: 'online' },
-                { id: 'ont-cedar', name: 'Cedar Court', detail: 'ONT D9:14', status: 'impaired' },
-                { id: 'ont-tidal', name: 'Tidal Books', detail: 'ONT E2:39', status: 'online' },
+                {
+                  id: 'ont-canvas',
+                  name: 'Canvas Works',
+                  detail: 'ONT 5F:80',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-cedar',
+                  name: 'Cedar Court',
+                  detail: 'ONT D9:14',
+                  status: 'impaired',
+                },
+                {
+                  id: 'ont-tidal',
+                  name: 'Tidal Books',
+                  detail: 'ONT E2:39',
+                  status: 'online',
+                },
               ],
             },
             {
@@ -82,7 +137,12 @@ const TOPOLOGY: TopologyNode = {
               detail: 'Distribution point · West',
               status: 'unknown',
               children: [
-                { id: 'ont-meadow', name: 'Meadow Clinic', detail: 'ONT 12:AB', status: 'unknown' },
+                {
+                  id: 'ont-meadow',
+                  name: 'Meadow Clinic',
+                  detail: 'ONT 12:AB',
+                  status: 'unknown',
+                },
               ],
             },
             {
@@ -91,9 +151,24 @@ const TOPOLOGY: TopologyNode = {
               detail: 'Pending field assignment',
               status: 'unknown',
               children: [
-                { id: 'ont-horizon', name: 'Horizon Gym', detail: 'ONT 61:CE', status: 'online' },
-                { id: 'ont-kestrel', name: 'Kestrel Bakery', detail: 'ONT 0B:47', status: 'online' },
-                { id: 'ont-oak', name: 'Oak Pharmacy', detail: 'ONT 98:F3', status: 'power-outage' },
+                {
+                  id: 'ont-horizon',
+                  name: 'Horizon Gym',
+                  detail: 'ONT 61:CE',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-kestrel',
+                  name: 'Kestrel Bakery',
+                  detail: 'ONT 0B:47',
+                  status: 'online',
+                },
+                {
+                  id: 'ont-oak',
+                  name: 'Oak Pharmacy',
+                  detail: 'ONT 98:F3',
+                  status: 'power-outage',
+                },
               ],
             },
           ],
@@ -126,7 +201,7 @@ export class AppComponent {
     }
 
     const selected = this.findNode(TOPOLOGY, click.data.id);
-    if (!selected) {
+    if (!selected || selected.children?.length) {
       return;
     }
 
@@ -190,7 +265,10 @@ export class AppComponent {
           },
           emphasis: {
             focus: 'none',
-            itemStyle: { shadowBlur: 10, shadowColor: 'rgba(38, 91, 140, 0.25)' },
+            itemStyle: {
+              shadowBlur: 10,
+              shadowColor: 'rgba(38, 91, 140, 0.25)',
+            },
             lineStyle: { width: 2 },
           },
         },

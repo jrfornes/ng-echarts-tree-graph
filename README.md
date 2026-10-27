@@ -6,7 +6,7 @@ The example demonstrates:
 
 - a semantic status legend;
 - per-node colors for online, offline, power outage, impaired, and unknown states;
-- a persistent active-node state selected by clicking a node;
+- a persistent active-node state selected by clicking an end node;
 - expandable and collapsible branches;
 - responsive chart sizing with horizontal scrolling on smaller screens.
 
@@ -33,6 +33,7 @@ npm run build
 
 The legend is rendered as accessible Angular markup because an ECharts legend represents
 series, while this chart uses a single tree series and colors individual nodes by status.
+
 # TopologyTree
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.

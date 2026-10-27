@@ -3,7 +3,9 @@
     <div>
       <p class="eyebrow">Network operations</p>
       <h1>Access topology</h1>
-      <p class="subtitle">Live service health across the Harbor Exchange distribution tree.</p>
+      <p class="subtitle">
+        Live service health across the Harbor Exchange distribution tree.
+      </p>
     </div>
 
     <div class="active-card" aria-live="polite">
@@ -25,7 +27,10 @@
     <div class="toolbar">
       <div>
         <h2 id="topology-title">Distribution overview</h2>
-        <p>Select any node to make it active. Select a branch node to collapse or expand it.</p>
+        <p>
+          Select an end node to make it active. Select a branch node to collapse
+          or expand it.
+        </p>
       </div>
 
       <ul class="legend" aria-label="Node status legend">
@@ -46,7 +51,7 @@
         [autoResize]="true"
         (chartClick)="onChartClick($event)"
         role="img"
-        aria-label="Interactive network topology tree. Select a node to view its details."
+        aria-label="Interactive network topology tree. Select an end node to view its details."
       ></div>
     </div>
 
