@@ -1,0 +1,58 @@
+<main class="page-shell">
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">Network operations</p>
+      <h1>Access topology</h1>
+      <p class="subtitle">Live service health across the Harbor Exchange distribution tree.</p>
+    </div>
+
+    <div class="active-card" aria-live="polite">
+      <span class="active-card__label">Active node</span>
+      <div class="active-card__content">
+        <span
+          class="status-dot"
+          [style.background]="statusMeta[activeNode.status].color"
+        ></span>
+        <div>
+          <strong>{{ activeNode.name }}</strong>
+          <span>{{ activeNode.detail }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="topology-card" aria-labelledby="topology-title">
+    <div class="toolbar">
+      <div>
+        <h2 id="topology-title">Distribution overview</h2>
+        <p>Select any node to make it active. Select a branch node to collapse or expand it.</p>
+      </div>
+
+      <ul class="legend" aria-label="Node status legend">
+        @for (item of legend; track item.status) {
+          <li>
+            <span class="legend__marker" [style.background]="item.color"></span>
+            {{ item.label }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="chart-scroll">
+      <div
+        echarts
+        class="topology-chart"
+        [options]="chartOptions"
+        [autoResize]="true"
+        (chartClick)="onChartClick($event)"
+        role="img"
+        aria-label="Interactive network topology tree. Select a node to view its details."
+      ></div>
+    </div>
+
+    <footer class="card-footer">
+      <span><i class="pulse"></i> Topology synchronized</span>
+      <span>{{ activeNode.name }} is selected</span>
+    </footer>
+  </section>
+</main>
