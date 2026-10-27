@@ -156,23 +156,6 @@ h1 {
   height: 9px;
 }
 
-.chart-scroll {
-  overflow-x: auto;
-  background:
-    linear-gradient(#f8fafc 1px, transparent 1px),
-    linear-gradient(90deg, #f8fafc 1px, transparent 1px),
-    #ffffff;
-  background-size: 32px 32px;
-}
-
-.topology-chart {
-  width: 100%;
-  min-width: 1120px;
-  height: min(68vh, 690px);
-  min-height: 580px;
-  cursor: pointer;
-}
-
 .card-footer {
   display: flex;
   align-items: center;
