@@ -1,0 +1,11 @@
+<div class="chart-scroll">
+  <div
+    echarts
+    class="tree-graph"
+    [options]="chartOptions"
+    [autoResize]="true"
+    (chartClick)="onChartClick($event)"
+    role="img"
+    aria-label="Interactive network topology tree. Select an end node to view its details."
+  ></div>
+</div>

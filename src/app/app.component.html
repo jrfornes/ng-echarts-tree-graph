@@ -43,17 +43,12 @@
       </ul>
     </div>
 
-    <div class="chart-scroll">
-      <div
-        echarts
-        class="topology-chart"
-        [options]="chartOptions"
-        [autoResize]="true"
-        (chartClick)="onChartClick($event)"
-        role="img"
-        aria-label="Interactive network topology tree. Select an end node to view its details."
-      ></div>
-    </div>
+    <app-tree-graph
+      [root]="topology"
+      [statusMeta]="statusMeta"
+      [activeNodeId]="activeNode.id"
+      (nodeSelect)="onNodeSelect($event)"
+    />
 
     <footer class="card-footer">
       <span><i class="pulse"></i> Topology synchronized</span>
